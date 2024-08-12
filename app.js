@@ -8,7 +8,7 @@
  */
 
 // Write your code here
-
+const CryptoJS = require("crypto-js");
 /**
  * Variables: Do not change variable values to be able to answer the quiz
  */
@@ -28,6 +28,14 @@ const dataObject = {
 
 function generateHash(obj) {
 	// Write your code here
+		// Convert the object to a JSON string if it’s an object, otherwise use it directly
+		const jsonString = typeof obj === 'object' ? JSON.stringify(obj) : obj;
+	
+		// Generate the SHA-256 hash of the string
+		const hash = CryptoJS.SHA256(jsonString).toString();
+	
+		return hash;
+	
 }
 
 console.log(`SHA256 Hash: ${generateHash(data1)}`);
